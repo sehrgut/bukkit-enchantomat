@@ -1,0 +1,5 @@
+name: Enchantomat
+main: com.alphahelical.bukkit.enchantomat.Enchantomat
+version: 0.1a
+softdepend: [Vault]
+depend: SGCore
