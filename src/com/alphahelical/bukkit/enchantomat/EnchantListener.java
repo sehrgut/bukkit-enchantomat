@@ -19,7 +19,7 @@ public class EnchantListener implements Listener {
 	public void onPlayerBlockInteract (PlayerInteractEvent e) {
 		if (e.isCancelled()) return;
 		
-		if(Enchanter.hasEnchanter(e.getClickedBlock())) {
+		if(Util.isEnchanter(e.getClickedBlock())) {
 			Player p = e.getPlayer();
 			Block b = e.getClickedBlock();
 			

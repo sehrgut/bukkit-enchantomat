@@ -3,18 +3,10 @@
  */
 package com.alphahelical.bukkit.enchantomat;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -23,27 +15,6 @@ import org.bukkit.inventory.ItemStack;
  */
 public class Enchanter {
 
-
-	private List<Inventory> getLinkedInventories() {
-		List<BlockFace> searchFaces = Arrays.asList(BlockFace.DOWN, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST);
-		BlockFace inventoryFace = null;
-		
-		for (BlockFace face : searchFaces) {
-			if(this.getBlock().getRelative(face).getState() instanceof InventoryHolder) {
-				inventoryFace = face;
-				break;
-			}
-		}
-		
-		List<Inventory> inventories = new ArrayList<Inventory> ();
-		
-		Block cur = this.getBlock();
-		while(cur == this.getBlock() || cur.getState() instanceof InventoryHolder) {
-			// TODO: finish block search. this is enough of a pain it should be general-purpose
-		}
-		
-		return null;
-	}
 	
 	public Inventory getSalesInventory(ItemStack item) {
 		return null;
@@ -70,13 +41,9 @@ public class Enchanter {
 	}
 	
 	public static Enchanter getEnchanter(Block b) {
-		if (! hasEnchanter(b))
+		if (! Util.isEnchanter(b))
 			getEnchanters().put(b, new Enchanter(b));
 		return getEnchanters().get(b);
-	}
-	
-	public static boolean hasEnchanter(Block b) {
-		return getEnchanters().containsKey(b);
 	}
 	
 	

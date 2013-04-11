@@ -1,0 +1,37 @@
+#
+# "items" contains items Enchantomat knows how to vend.
+#
+# "aliases" contains aliases of enchantment names, so you can define items with mnemonic names rather than
+# the internal names
+#
+#
+#
+#
+items:
+  - item: diamond_leggings
+    enchantments: { protection: 3 }
+    cost: 500
+  - item: diamond_leggings
+    enchantments:
+      protection: 3
+      unbreaking: 1
+    cost: 1000
+aliases:
+  unbreaking: durability
+  respiration: oxygen
+  power: arrow_damage
+  flame: arrow_fire
+  infinity: arrow_infinite
+  punch: arrow_knockback
+  protection: protection_environmental
+  fire_protection: protection_fire
+  feather_falling: protection_fall
+  blast_protection: protection_explosions
+  projectile_protection: protection_projectile
+  aqua_affinity: water_worker
+  sharpness: damage_all
+  smite: damage_undead
+  bane: damage_arthropods
+  looting: loot_bonus_mobs
+  efficiency: dig_speed
+  fortune: loot_bonus_blocks
