@@ -24,7 +24,7 @@ public class EnchantomatPlugin extends SGPlugin {
 	 */
 	@Override
 	protected void onEnabled() {
-
+		this.registerListeners(new EnchantListener(this));
 	}
 
 	/* (non-Javadoc)

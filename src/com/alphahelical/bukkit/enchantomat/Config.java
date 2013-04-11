@@ -1,6 +1,5 @@
 package com.alphahelical.bukkit.enchantomat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +7,7 @@ import java.util.Map;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 public class Config {
@@ -25,20 +25,20 @@ public class Config {
 		return getPlugin().getConfig().getConfigurationSection("aliases").getString(alias, alias);
 	}
 	
-	public static Map<Material, List<EnchanterItem>> getItems() {
+	public static Map<Material, Map<ItemStack, Integer>> getItems() {
 		
 		List<?> items = getPlugin().getConfig().getList("items");
 		
-		Map<Material, List<EnchanterItem>> out = new HashMap<Material, List<EnchanterItem>>();
+		Map<Material, Map<ItemStack, Integer>> out = new HashMap<Material, Map<ItemStack, Integer>>();
 		
 		for(Object i : items) {
 			if (i instanceof ConfigurationSection) {
 				EnchanterItem item = EnchanterItem.fromConfig((ConfigurationSection) i);
 				
 				if (! out.containsKey(item.getItem().getType()))
-					out.put(item.getItem().getType(), new ArrayList<EnchanterItem>());
+					out.put(item.getItem().getType(), new HashMap<ItemStack, Integer>());
 				
-				out.get(item.getItem().getType()).add(item);
+				out.get(item.getItem().getType()).put(item.getItem(), item.getCost());
 			}
 		}
 		
